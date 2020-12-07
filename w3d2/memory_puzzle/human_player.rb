@@ -17,7 +17,7 @@ class HumanPlayer
   end
 
   def parse(string)
-    string.split(",").map(&:to_i)0
+    string.split(",").map(&:to_i)
   end
 
   def receive_revealed_card(pos, revealed_value)
