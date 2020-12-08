@@ -21,9 +21,13 @@ class Manager < Employee
 
     attr_reader :employees
 
-    def initialize(name, title, salary, boss, employees)
+    def initialize(name, title, salary, boss)
         super(name, title, salary, boss)
         @employees = []
+    end
+
+    def add_employee(employee)
+        @employees << employee if employee.boss == self
     end
 
     def bonus(multiplier)
@@ -37,13 +41,27 @@ class Manager < Employee
 
         until arr.empty?
             current_person = arr.shift
-            current_salary = current_person.salary
-            current_person.employees.each do |employee|
-                total_salary += employee.salary
-                arr << employee
+            if current_person.is_a?(Manager)
+                current_person.employees.each do |employee|
+                    total_salary += employee.salary
+                    arr << employee
+                end
             end
         end
         total_salary
     end
 
 end
+
+ned = Manager.new("Ned", "Founder", 1000000, nil)
+darren = Manager.new("Darren", "TA Manager", 78000, ned)
+david = Employee.new("Shawna", "TA", 10000, darren)
+shawna = Employee.new("Shawna", "TA", 12000, darren)
+
+ned.add_employee(darren)
+darren.add_employee(david)
+darren.add_employee(shawna)
+
+p ned.bonus(5) # => 500_000
+p darren.bonus(4) # => 88_000
+p david.bonus(3) # => 30_000
