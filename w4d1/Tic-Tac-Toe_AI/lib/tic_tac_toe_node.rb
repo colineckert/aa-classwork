@@ -12,9 +12,16 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    #board is over
+    #board.winner == oppnent
+    # @board[@prev_move_pos]
+    return true if @board.over? && @board.winner != evaluator
+    false
   end
 
   def winning_node?(evaluator)
+    return true if @board.over? && @board.winner == evaluator
+    false
   end
 
   # This method generates an array of all moves that can be made after
@@ -36,7 +43,6 @@ class TicTacToeNode
         end
       end
     end
-      
     arr
   end
 end
