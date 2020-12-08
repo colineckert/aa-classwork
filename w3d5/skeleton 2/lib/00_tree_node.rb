@@ -8,6 +8,14 @@ class PolyTreeNode
         @value = value
     end
 
+    def inspect
+        # { 'value' => @value, 'children' => @children.each do }.inspect
+        # @children.each do |child|
+        #     puts "#{child.value}"
+        # end
+        "value: #{self.value}, children: #{@children.map { |child| child.value }}"
+    end
+
     def parent=(value)
 
         if @parent != nil 
