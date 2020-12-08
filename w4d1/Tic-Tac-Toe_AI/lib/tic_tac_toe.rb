@@ -23,10 +23,10 @@ class Board
     @rows[row][col] = mark
   end
 
-  def cols
-    cols = [[], [], []]
-    @rows.each do |row|
-      row.each_with_index do |mark, col_idx|
+    def cols
+      cols = [[], [], []]
+      @rows.each do |row|
+        row.each_with_index do |mark, col_idx|
         cols[col_idx] << mark
       end
     end

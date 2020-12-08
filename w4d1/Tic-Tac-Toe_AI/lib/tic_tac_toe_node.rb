@@ -12,9 +12,6 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
-    #board is over
-    #board.winner == oppnent
-    # @board[@prev_move_pos]
     return true if @board.over? && @board.winner != evaluator
     false
   end
