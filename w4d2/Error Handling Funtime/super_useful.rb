@@ -17,7 +17,7 @@ end
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
 
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
+  puts "Feed me a fruit! (Enter the name of a fruit :)"
   maybe_fruit = gets.chomp
   reaction(maybe_fruit) 
 end  
