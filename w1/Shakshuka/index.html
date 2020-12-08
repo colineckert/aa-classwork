@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Colin Eckert's Simple Shakshuka Recipe</title>
+    <meta name="description" content="The best, simple recipe for delicious Middle Eastern Shakshuka, a cumin spiced tomato sauce with sautéd onions and chili peppers topped with poached eggs.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-12345678-9', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <link rel="stylesheet" href="./assets/css-reset.css" type="text/css">
+    <link rel="stylesheet" href="./assets/style.css" type="text/css">
+    <script type="text/javascript" src="./assets/external_example.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/appacademylogo.png" alt="app-academy-logo"/>
+        <nav>
+            <ul>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#ingredients">Ingredients</a></li>
+                <li><a href="#instructions">Instructions</a></li>
+            </ul>
+        </nav>
+        
+        <section>
+            <aside>
+                <h2 id="ingredients">Ingredients</h2>
+                <ul class="ingredients-list">
+                    <li>1 tbsp. olive oil</li>
+                    <li>1 small onion, chopped (3/4 cup)</li>
+                    <li>1 medium red pepper, chopped (1 cup)</li>
+                    <li>6 garlic cloves, crushed</li>
+                    <li>3 tablespoons tomato paste (50 grams / 2 oz)</li>
+                    <li>5 medium tomatoes, chopped (800 grams / 28 oz)</li>
+                    <li>2 tablespoons paprika</li>
+                    <li>pinch cumin (1/8 teaspoon)</li>
+                    <li>1 teaspoon salt</li>
+                    <li>1/2 cup water</li>
+                    <li>4 eggs</li>
+                    <li>chopped parsley</li>
+                    <li>hearty bread for serving</li>
+                </ul>
+            </aside>
+        </section>
+    </header>
+
+    <h1>Shakshuka</h1>
+    <section name="image">
+        <figure>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Shakshuka_by_Calliopejen1.jpg/440px-Shakshuka_by_Calliopejen1.jpg" />
+            <figcaption><a href="https://en.wikipedia.org/wiki/Shakshouka">The History of Shakshuka</a></figcaption>
+        </figure>
+    </section>
+    <section>
+        <h2 id="description">Description</h2>
+            <p>Shakshuka (Arabic: شكشوكة‎, also spelled shakshouka or chakchouka) is a dish of eggs poached in a sauce of tomatoes,
+            olive oil, peppers, onion and garlic, and commonly spiced with cumin, paprika, cayenne pepper, and nutmeg. The dish has
+            existed in Mediterranean cultures for centuries. Serves 2-4.</p>
+    </section>
+
+    <section>
+        <h2 id="instructions">Instructions</h2>
+            <ol>
+                <li>Pour about a tablespoon of olive oil into a deep frying pan or saute pan on medium heat. Add onions and let fry for a
+                few minutes, until lightly softened. Stir occasionally. Add red pepper and fry until lightly softened. Add garlic and
+                fry until lightly browned.</li>
+                <li>Add tomato paste to the pan and stir, letting it brown slightly. Add chopped tomatoes, followed by water, paprika, cumin
+                and salt. Stir until all the ingredients are well integrated, and then cover and let simmer on a low flame for about 10
+                minutes, until tomatoes are softened and beginning to fall apart. Lift the lid and stir occasionally.</li>
+                <li>Once tomatoes are cooked, remove lid and stir again. Taste and adjust seasonings. Make sure the sauce is more or less
+                level in the pan.</li>
+                <li>Add the eggs: Using a spoon, make a well in the surface of the sauce. Crack an egg into the well. Using the spoon,
+                arrange the whites and surrounding sauce as necessary so that the egg yolk is below the surface of the sauce. Repeat for
+                the remaining eggs.</li>
+                <li>Cover and let simmer on a low flame until the egg whites are set, between 5-8 more minutes. The yolks should be covered
+                with an opaque film when done.</li>
+                <li>Remove the lid, sprinkle with chopped parsley and serve immediately. If the shakshuka sits for too long, or is left
+                covered, the egg yolks will become solid.</li>
+            </ol>
+    </section>
+
+    <section id="reviews">
+        <h2>Reviews</h2>
+        <form id="review-form" action="/reviews" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name">
+            <label>Rating
+                1<input type="radio" name="rating" value="1" checked>
+                2<input type="radio" name="rating" value="2">
+                3<input type="radio" name="rating" value="3">
+                4<input type="radio" name="rating" value="4">
+                5<input type="radio" name="rating" value="5">
+            </label>
+            <label for="expertise">Cooking Expertise</label>
+            <select id="expertise" name="expertise" >
+                <option value="Select Cooking Expertise" disabled="true" selected="true">Select Cooking Expertise</option>
+                <option value="Sometimes Cook">Sometimes Cook</option>
+                <option value="Cook Everyday">Cook Everyday</option>
+                <option value="Cooking is a Hobby">Cooking is a Hobby</option>
+                <option value="Professional Chef">Professional Chef</option>
+            </select>
+            <label>Review
+                <textarea id="review" name="review" cols="30" rows="10"></textarea>
+            </label>
+
+            <input type="submit" value="Submit Review">
+        </form>
+    </section>
+
+    <footer>
+        <p>Original recipe shared on <a href="https://www.touchpointisrael.com/2018/05/15/recipe-and-video-how-to-make-israeli-shakshuka/?gclid=CjwKCAiAzNj9BRBDEiwAPsL0dyU1P5HngipsxkA_AIkOvNXUSaAx7FFpXh10FR3nt3__I5ATdEXrHRoCUB0QAvD_BwE">touchpointisrael.com</a></p>
+    </footer>
+</body>
+
+</html>
