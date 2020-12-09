@@ -24,15 +24,15 @@ module Slideable
 
     def moves
         possible_moves = []
-        moves_dirs.each do |move|
+        move_dirs.each do |move|
             dx, dy = move
             possible_moves.concat(grow_unblocked_movesin_dir(dx, dy))
         end
         possible_moves
     end
 
-    def moves_dirs
-    end
+    # def moves_dirs
+    # end
 
     def grow_unblocked_movesin_dir(dx, dy)
         extended_moves = []
@@ -53,7 +53,7 @@ module Stepable
 
     def moves
         possible_steps = []
-        moves_diffs.each do |step|
+        move_diffs.each do |step|
             dx, dy = step
             x, y = self.pos
             new_pos = [x + dx, y + dy]

@@ -22,8 +22,8 @@ class Piece
     def valid_moves
         positions = []
         grid = @board.grid
-        grid.each do |row|
-            row.each do |col|
+        (0..7).each do |row|
+            (0..7).each do |col|
                 piece = grid[row][col]
                 if piece.color != self.color || piece.is_a?(NullPiece) 
                     positions << [row, col]
@@ -36,6 +36,17 @@ class Piece
     def pos=(val)
         @pos = val
     end
+
+    private
+    def move_into_check?(end_pos)
+        board_dup = @board.dup 
+        board_dup.move_piece(self.pos, end_pos)
+        possible_moves = board_dup[end_pos].moves 
+        possible_moves.any? do |move|
+            board_dup[move].class == King && board_dup[move].color != self.color
+        end
+    end
+
 end
 
 class NullPiece < Piece
@@ -146,7 +157,7 @@ class Rook < Piece
 
     private
     def move_dirs
-        self.hor_ver_dirs
+        hor_ver_dirs
     end
 end
 
@@ -184,10 +195,10 @@ class Pawn < Piece
         #return array of all possible forward steps you can do
         f_steps = []
         dx = self.pos[0] + forward_dir
-        f_steps << [dx, self.pos[1]] if @board[[dx, self.pos[1]]].is_a?(NullPiece)
+        f_steps << [dx, self.pos[1]] if self.valid_moves.include?([dx, self.pos[1]]) #@board[[dx, self.pos[1]]].is_a?(NullPiece)
         if at_start_row?
             dx_two = self.pos[0] + 2*forward_dir 
-            f_steps << [dx_two, self.pos[1]] if @board[[dx, self.pos[1]]].is_a?(NullPiece)
+            f_steps << [dx_two, self.pos[1]] if self.valid_moves.include?([dx_two, self.pos[1]]) #@board[[dx, self.pos[1]]].is_a?(NullPiece)
         end
         f_steps
     end

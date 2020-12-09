@@ -41,7 +41,15 @@ class Board
         self[start_pos] = @null_piece
     end
 
-    
+    def dup
+        new_board = Board.new
+        self.grid.each_with_index do |row, i|
+            row.each_with_index do |piece, j|
+                new_board[[i, j]] = piece.class.new(piece.color, new_board, [i, j])
+            end
+        end
+        new_board
+    end
     
     
     private
