@@ -1,4 +1,5 @@
 require 'singleton'
+require_relative 'modules'
 
 class Piece
     attr_reader :color, :board, :pos
@@ -45,3 +46,95 @@ class NullPiece < Piece
     end
 end
 
+class Bishop
+    include Slideable
+
+    def symbol
+        "♗" if self.color == :white
+        "♝" if self.color == :black
+    end
+
+    private
+    def move_dirs
+        self.diag_dirs
+    end
+end
+
+class King
+    include Stepable
+
+    def symbol
+        "♔" if self.color == :white
+        "♚" if self.color == :black
+    end
+
+    protected 
+    def move_diffs
+        [[1,1],
+        [1,-1],
+        [-1, 1],
+        [-1,-1],
+        [1,0],
+        [-1,0],
+        [0,1],
+        [0,-1]]
+    end
+end
+
+class Knight
+    include Stepable
+
+    def symbol
+        "♘" if self.color == :white
+        "♞" if self.color == :black
+    end 
+
+    protected
+    def move_diffs
+        [[2,1],
+        [2,-1],
+        [-2, 1],
+        [-2,-1],
+        [1,2],
+        [-1,2],
+        [1,-2],
+        [-1,-2]]
+    end
+end
+
+class Queen
+    include Slideable
+
+    def symbol
+        "♕" if self.color == :white
+        "♛" if self.color == :black
+    end
+
+    private
+    def move_dirs
+        self.hor_ver_dirs + self.diag_dirs
+    end
+end
+
+class Rook
+    include Slideable
+
+    def symbol
+        "♖" if self.color == :white
+        "♜" if self.color == :black
+    end
+
+    private
+    def move_dirs
+        self.hor_ver_dirs
+    end
+end
+
+class Pawn
+    
+
+    def symbol
+        "♙" if self.color == :white
+        "♟︎" if self.color == :black
+    end
+end

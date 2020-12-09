@@ -1,16 +1,16 @@
 module Slideable
 
     HOR_VER_DIRS = [
-        [1,0]
-        [-1,0]
-        [0,1]
+        [1,0],
+        [-1,0],
+        [0,1],
         [0,-1]
     ]
 
     DIAG_DIRS = [
-        [1,1]
-        [1,-1]
-        [-1, 1]
+        [1,1],
+        [1,-1],
+        [-1, 1],
         [-1,-1]
     ]
 
@@ -46,14 +46,23 @@ module Slideable
         end
         extended_moves
     end
+
 end
 
 module Stepable
 
-    
-
-
+    def moves
+        possible_steps = []
+        moves_diffs.each do |step|
+            dx, dy = step
+            x, y = self.pos
+            new_pos = [x + dx, y + dy]
+            possible_steps << new_pos if self.valid_moves.include?(new_pos)
+        end
+        possible_steps
+    end
 
     def move_diffs
     end
+
 end
