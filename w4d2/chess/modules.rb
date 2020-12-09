@@ -14,7 +14,7 @@ module Slideable
         [-1,-1]
     ]
 
-    def hor_vir_dirs
+    def hor_ver_dirs
         return HOR_VER_DIRS
     end
 
@@ -31,10 +31,29 @@ module Slideable
         possible_moves
     end
 
+    def moves_dirs
+    end
+
     def grow_unblocked_movesin_dir(dx, dy)
+        extended_moves = []
+        pos_dup = [self.pos.dup[0] + dx,  self.pos.dup[1] + dy]
+        
+        until !self.valid_moves.include?(pos_dup)
+            extended_moves << pos_dup
+            break if self.board[pos_dup].color != self.color && !self.board[pos_dup].is_a?(NullPiece)
+            x, y = pos_dup
+            pos_dup = x + dx, y + dy
+        end
+        extended_moves
     end
 end
 
 module Stepable
+
     
+
+
+
+    def move_diffs
+    end
 end
