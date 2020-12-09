@@ -46,8 +46,12 @@ class NullPiece < Piece
     end
 end
 
-class Bishop
+class Bishop < Piece
     include Slideable
+
+    def initialize(color, board, position)
+        super
+    end
 
     def symbol
         "♗" if self.color == :white
@@ -60,8 +64,12 @@ class Bishop
     end
 end
 
-class King
+class King < Piece
     include Stepable
+
+    def initialize(color, board, position)
+        super
+    end
 
     def symbol
         "♔" if self.color == :white
@@ -81,8 +89,12 @@ class King
     end
 end
 
-class Knight
+class Knight < Piece
     include Stepable
+
+    def initialize(color, board, position)
+        super
+    end
 
     def symbol
         "♘" if self.color == :white
@@ -102,8 +114,12 @@ class Knight
     end
 end
 
-class Queen
+class Queen < Piece
     include Slideable
+
+    def initialize(color, board, position)
+        super
+    end
 
     def symbol
         "♕" if self.color == :white
@@ -116,8 +132,12 @@ class Queen
     end
 end
 
-class Rook
+class Rook < Piece
     include Slideable
+
+    def initialize(color, board, position)
+        super
+    end
 
     def symbol
         "♖" if self.color == :white
@@ -130,11 +150,72 @@ class Rook
     end
 end
 
-class Pawn
-    
+class Pawn < Piece
+
+    # def initialize(color, board, position)
+    #     super
+    # end
 
     def symbol
         "♙" if self.color == :white
         "♟︎" if self.color == :black
     end
+
+    def move
+        forward_steps + side_attacks
+    end
+
+    private
+
+    def at_start_row?
+        if self.color == :white 
+            return true if self.pos[0] == 1
+        else
+            return true if self.pos[0] == 6
+        end
+        false
+    end
+    
+    def forward_dir
+        self.color == :white ? 1 : -1
+    end
+
+    def forward_steps
+        #return array of all possible forward steps you can do
+        f_steps = []
+        dx = self.pos[0] + forward_dir
+        f_steps << [dx, self.pos[1]] if @board[[dx, self.pos[1]]].is_a?(NullPiece)
+        if at_start_row?
+            dx_two = self.pos[0] + 2*forward_dir 
+            f_steps << [dx_two, self.pos[1]] if @board[[dx, self.pos[1]]].is_a?(NullPiece)
+        end
+        f_steps
+    end
+
+    def side_attacks
+        s_moves = []
+        x, y = self.pos
+
+        if self.color == :white
+            dir = [[1,1], [1,-1]]
+            dir.each do |d|
+                dx, dy = d
+                new_pos = x+dx, y+dy
+                if !@board[new_pos].is_a?(NullPiece) && @board[new_pos].color != self.color
+                    s_moves << new_pos
+                end
+            end
+        else
+            dir = [[-1,1], [-1,-1]]
+            dir.each do |d|
+                dx, dy = d
+                new_pos = x+dx, y+dy
+                if !@board[new_pos].is_a?(NullPiece) && @board[new_pos].color != self.color
+                    s_moves << new_pos
+                end
+            end
+        end
+        s_moves
+    end
+
 end
