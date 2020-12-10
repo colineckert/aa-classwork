@@ -1,3 +1,5 @@
+require "byebug"
+
 def my_uniq(arr)
     new_arr = []
     arr.each do |ele|
@@ -27,3 +29,26 @@ def my_transpose(matrix)
     end
     new_arr
 end
+
+# Stock Picker
+# Write a method that takes an array of stock prices (prices on days 0, 1, ...), and outputs the most profitable pair of days on which to first buy the stock and then sell the stock. Remember, you can't sell stock before you buy it!
+#trying to find biggest delta
+#array. ele = value. index = day
+#return the pair of indices that are most profitable
+
+def stock_picker(days)
+    max = 0
+    arr = []
+    (0...days.length - 1).each do |i|
+        (i...days.length).each do |j|
+        # debugger
+            delta = days[j] - days[i]
+            if delta > max 
+                max = delta 
+                arr = [i, j] 
+            end 
+        end
+    end
+    arr
+end
+

@@ -42,3 +42,16 @@ describe "#my_transpose" do
         expect(my_transpose(test_matrix)).to_not be(test_matrix)
     end
 end
+
+describe "#stock_picker" do
+    subject(:test_days) {[25, 50, 35, 100, 10]}
+    it "should return an indices pair with the greatest delta" do
+        expect(stock_picker(test_days)).to eq([0,3])
+    end
+
+    it "should return a pair of indices where the first index is less than the second index" do
+        expect(stock_picker(test_days)).to_not eq([3,4])
+    end
+
+
+end
