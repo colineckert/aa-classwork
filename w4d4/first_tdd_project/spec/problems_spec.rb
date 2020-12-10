@@ -2,11 +2,8 @@ require 'rspec'
 require 'problems'
 
 describe "#my_uniq" do
-    let(:test_array) { [1, 2, 3, 3, 3, 4, 4] }
+    subject(:test_array) { [1, 2, 3, 3, 3, 4, 4] }
     it "should only return unique elements" do
-        # test_array.each do |ele|
-
-        # end
         expect(my_uniq(test_array)).to eq([1,2,3,4])
     end
     it "should return a new array" do 
@@ -15,5 +12,19 @@ describe "#my_uniq" do
 
     it "should return an empty array if given array is empty" do 
         expect(my_uniq([])).to eq([])
+    end
+end
+
+describe "#my_two_sum" do
+    it "should return indices of pairs that sum to zero" do
+        expect(my_two_sum([0, 2, -2])).to eq([[1,2]])
+    end
+
+    it "should return multiple pairs" do
+        expect(my_two_sum([-1, 0, 2, -2, 1])).to eq([[0,4], [2,3]])
+    end
+
+    it "should not return a pair of the same indices" do
+        expect(my_two_sum([0, 2, -2])).to_not eq([[0,0], [1,2]])
     end
 end
