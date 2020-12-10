@@ -11,7 +11,7 @@ class Piece
     end
 
     def to_s
-        self.color.to_s
+        self.symbol
     end
 
     def empty?
@@ -55,6 +55,10 @@ class NullPiece < Piece
     def initialize
         super('', nil, nil)
     end
+
+    def to_s
+        ""
+    end
 end
 
 class Bishop < Piece
@@ -65,7 +69,7 @@ class Bishop < Piece
     end
 
     def symbol
-        "♗" if self.color == :white
+        return "♗" if self.color == :white
         "♝" if self.color == :black
     end
 
@@ -83,7 +87,7 @@ class King < Piece
     end
 
     def symbol
-        "♔" if self.color == :white
+        return "♔" if self.color == :white
         "♚" if self.color == :black
     end
 
@@ -108,7 +112,7 @@ class Knight < Piece
     end
 
     def symbol
-        "♘" if self.color == :white
+        return "♘" if self.color == :white
         "♞" if self.color == :black
     end 
 
@@ -133,7 +137,7 @@ class Queen < Piece
     end
 
     def symbol
-        "♕" if self.color == :white
+        return "♕" if self.color == :white
         "♛" if self.color == :black
     end
 
@@ -151,7 +155,7 @@ class Rook < Piece
     end
 
     def symbol
-        "♖" if self.color == :white
+        return "♖" if self.color == :white
         "♜" if self.color == :black
     end
 
@@ -168,7 +172,7 @@ class Pawn < Piece
     # end
 
     def symbol
-        "♙" if self.color == :white
+        return "♙" if self.color == :white
         "♟︎" if self.color == :black
     end
 

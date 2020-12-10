@@ -1,5 +1,8 @@
+require 'byebug'
+
 require 'colorize'
 require_relative 'cursor'
+require_relative 'board'
 
 class Display
 
@@ -9,10 +12,15 @@ class Display
     end
     
     def render
-        @board.each_with_index do |row, i|
-            row.each_with_index do |piece, j|
-                print piece.symbol
+        @board.grid.each_with_index do |row, i|
+            row.map! do |piece|
+                if @cursor.cursor_pos == piece.pos
+                    piece.symbol.colorize({ background: :red }) 
+                else
+                    piece.symbol if piece.class != NullPiece
+                end
             end
+            puts row.join(" ")
         end
     end
 end
