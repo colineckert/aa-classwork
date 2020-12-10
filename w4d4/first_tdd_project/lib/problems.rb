@@ -15,3 +15,15 @@ def my_two_sum(arr)
     end
     new_arr
 end
+
+def my_transpose(matrix)
+    new_arr = []
+    (0...matrix.length).each do |row|
+        new_row = []
+        (0...matrix.length).each do |col|
+            new_row << matrix[col][row]
+        end
+        new_arr << new_row
+    end
+    new_arr
+end

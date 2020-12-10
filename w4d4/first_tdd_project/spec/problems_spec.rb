@@ -28,3 +28,17 @@ describe "#my_two_sum" do
         expect(my_two_sum([0, 2, -2])).to_not eq([[0,0], [1,2]])
     end
 end
+
+describe "#my_transpose" do 
+    subject(:test_matrix) { [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+    ] }
+    it "should transpose the matrix" do 
+        expect(my_transpose(test_matrix)).to eq(test_matrix.transpose)
+    end
+    it "should return a new matrix" do 
+        expect(my_transpose(test_matrix)).to_not be(test_matrix)
+    end
+end
