@@ -1,8 +1,3 @@
-# Towers of Hanoi
-# create 3 arrays including numbers for sizes
-# #move and #won?
-# won? => if 2 of the 3 arrays are empty?
-
 class TowerOfHanoi
     attr_accessor :stacks
 
@@ -28,8 +23,6 @@ class TowerOfHanoi
             if valid_move?(@stacks[old_tower], @stacks[new_tower])
                 disc = @stacks[old_tower].pop
                 @stacks[new_tower].push(disc)
-            else
-                raise "Invalid move. Can't place larger disc on top of smaller disc."
             end
         end
     end
@@ -56,8 +49,3 @@ class TowerOfHanoi
 
 end
 
-
-
-s = TowerOfHanoi.new
-p s
-s.move
