@@ -3,9 +3,10 @@ require "byebug"
 # my_min
 
 def my_min1(arr)
-    (0...arr.length - 1).each do |i|
+    (0...arr.length - 1).each do |i| # range is length of array
         return arr[i] if (i+1...arr.length).all? { |j| arr[i] < arr[j] }
     end
+    # try with arr.each
 end
 
 def my_min2(arr)
@@ -19,15 +20,17 @@ list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 # largest contiguous sub-sum
 
 def largest_contiguous_subsum1(list)
-    sub_sums = []
+    # space & time n^3
+    sub_sums = [] # space N^3
+    [1 2 3]
     (0...list.length).each do |i|
         sub_sums << [list[i]]
         (i+1...list.length).each do |j|
-            sub_sums << list[i..j]
+            sub_sums << list[i..j] # O(n)
         end
     end
     # debugger
-    (1...sub_sums.length).inject(sub_sums[0].sum) { |acc, el| sub_sums[el].sum > acc ? sub_sums[el].sum : acc }
+    (1...sub_sums.length).inject(sub_sums[0].sum) { |acc, el| sub_sums[el].sum > acc ? sub_sums[el].sum : acc } # n^3
 end
 
 def largest_contiguous_subsum2(list)
