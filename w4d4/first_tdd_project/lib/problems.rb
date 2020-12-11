@@ -51,4 +51,3 @@ def stock_picker(days)
     end
     arr
 end
-

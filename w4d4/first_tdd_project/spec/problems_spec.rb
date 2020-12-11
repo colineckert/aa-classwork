@@ -52,6 +52,4 @@ describe "#stock_picker" do
     it "should return a pair of indices where the first index is less than the second index" do
         expect(stock_picker(test_days)).to_not eq([3,4])
     end
-
-
 end
