@@ -43,9 +43,7 @@ def largest_contiguous_subsum2(list)
             current += list[i]
         end
         
-        if current > max
-            max = current
-        end
+        max = current if current > max
     end
     max
 
