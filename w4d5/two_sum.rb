@@ -37,14 +37,9 @@ p okay_two_sum?(arr, 10) # => should be false
 
 def two_sum?(arr, target)
     hash = {}
-    arr.each {|ele| hash[ele] = true}
     arr.each do |ele|
-        # debugger
-        key = target - ele
-        return true if hash.has_key?(key) && key != ele
-        # return true if hash[key] == true && key != ele
-        # return true if key == target - ele && key != ele # try to make value target - ele
-        # can't use hash.keys because array => N^2
+        return true if hash[target - ele]
+        hash[ele] = true
     end
     false
 end
@@ -53,8 +48,3 @@ end
 arr = [0, 1, 5, 7]
 p two_sum?(arr, 6) # => should be true
 p two_sum?(arr, 10) # => should be false
-
-
-# bonus 4sum
-
-
