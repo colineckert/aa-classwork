@@ -70,14 +70,19 @@ class ResizingIntSet
   end
   
   def insert(num)
-    self[num] << num
-    @count += 1
+    if !self.include?(num)
+      self[num] << num 
+      @count += 1
+    end
+    
     resize! if @count == num_buckets
   end
   
   def remove(num)
-    self[num].delete(num)
-    @count -= 1
+    if self.include?(num)
+      self[num].delete(num) 
+      @count -= 1
+    end
   end
   
   def include?(num)
@@ -102,7 +107,12 @@ class ResizingIntSet
       @store << Array.new
     end
     @store.each do |bucket|
-      bucket.each {|num| self.insert(num)}
+      if bucket
+        bucket.each do |num|
+          self.remove(num)
+          self.insert(num)
+        end
+      end
     end
   end
 end
