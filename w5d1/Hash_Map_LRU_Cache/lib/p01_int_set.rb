@@ -21,7 +21,7 @@ class MaxIntSet
   private
 
   def is_valid?(num)
-    return true if num.between?(0,@store.length)
+    return true if num.between?(0, @store.length)
     false
   end
 
@@ -37,20 +37,23 @@ class IntSet
   end
 
   def insert(num)
-    bucket = num % num_buckets
-    @store.insert(bucket, num)
+    self[num] << num
   end
 
   def remove(num)
+    self[num].delete(num)
   end
 
   def include?(num)
+    return true if self[num].include?(num)
+    false
   end
 
   private
 
   def [](num)
     # optional but useful; return the bucket corresponding to `num`
+    @store[num % num_buckets]
   end
 
   def num_buckets
