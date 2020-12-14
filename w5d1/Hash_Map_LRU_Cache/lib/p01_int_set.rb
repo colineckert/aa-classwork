@@ -103,16 +103,15 @@ class ResizingIntSet
 
   def resize!
     prev_num_buckets = num_buckets
-    prev_num_buckets.times do 
-      @store << Array.new
-    end
-    @store.each do |bucket|
-      if bucket
+    @store += Array.new(prev_num_buckets) {Array.new} #double size of @store
+    @store.each do |bucket| # go over every subarr in @store
+      if bucket            # if subarr exists
         bucket.each do |num|
           self.remove(num)
           self.insert(num)
         end
       end
     end
+    @count -= (prev_num_buckets / 2)
   end
 end

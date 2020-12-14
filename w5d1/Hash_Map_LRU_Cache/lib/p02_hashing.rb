@@ -3,7 +3,9 @@ class Integer
 end
 
 class Array
+  #iterate through arr, call .to_s on ele to get binary => XOR between ele & arr.length
   def hash
+    self.inject {|acc, ele| acc ^ ele }
   end
 end
 
