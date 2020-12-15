@@ -6,7 +6,7 @@ class Array
   #iterate through arr, call .to_s on ele to get binary => XOR between ele & arr.length
   def hash
     self.each_with_index.inject(0) do |acc_hash, (ele, idx)|
-      (ele.hash + idx.hash) ^ acc_hash
+      acc_hash ^ (ele.hash + idx.hash)
     end
   end
 end
