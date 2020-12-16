@@ -115,13 +115,13 @@ def andrews_films_and_leads
     SELECT
       movies.title, lead_actors.name
     FROM
-      movies
+      actors AS julie_actors
     JOIN
-      castings as julie_castings ON movies.id = julie_castings.movie_id
+      castings AS julie_castings ON julie_actors.id = julie_castings.actor_id
     JOIN
-      actors AS julie_actors ON julie_castings.actor_id = julie_actors.id
+      movies ON julie_castings.movie_id = movies.id
     JOIN
-      castings as lead_castings ON movies.id = lead_castings.movie_id
+      castings AS lead_castings ON movies.id = lead_castings.movie_id
     JOIN
       actors AS lead_actors ON lead_castings.actor_id = lead_actors.id
     WHERE
