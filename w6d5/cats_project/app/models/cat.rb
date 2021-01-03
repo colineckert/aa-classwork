@@ -3,7 +3,7 @@ require 'action_view'
 class Cat < ApplicationRecord
   include ActionView::Helpers::DateHelper
 
-  COLORS = ['Black', 'Brown', 'Orange']
+  COLORS = ['Black', 'Brown', 'Orange'].freeze
 
   validates :birth_date, :color, :name, :sex, :description, presence: true
   validates :color, inclusion: COLORS
@@ -15,7 +15,7 @@ class Cat < ApplicationRecord
 
   has_many :rental_requests,
     foreign_key: :cat_id,
-    class_name: :Cat,
+    class_name: :CatRentalRequest,
     dependent: :destroy
 
 end
