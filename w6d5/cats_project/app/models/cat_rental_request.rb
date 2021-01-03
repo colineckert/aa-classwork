@@ -20,6 +20,24 @@ class CatRentalRequest < ApplicationRecord
   def pending?
     self.status == 'PENDING'
   end
+
+  def approve!
+    raise 'not pending' unless self.status == 'PENDING'
+    
+    transaction do
+      self.status = 'APPROVED'
+      self.save!
+
+      overlapping_pending_requests.each do |request|
+        request.update!(status: 'DENIED')
+      end
+    end
+  end
+
+  def deny!
+    self.status = 'DENIED'
+    self.save!
+  end
   
   private
 
@@ -46,4 +64,5 @@ class CatRentalRequest < ApplicationRecord
       errors[:base] << 'Request conflicts with existing approved request'
     end
   end
+
 end

@@ -3,9 +3,9 @@
 <form action="<%= cat_rental_requests_url %>" method="post">
     <label for="cat_rental_request_cat_id">Cat: </label>
     <select name="cat_rental_request[cat_id]" id="cat_rental_request_cat_id">
-        <option></option>
+        <option>-- Select a Cat --</option>
         <% Cat.all.each do |cat| %>
-            <% selected  = @rental_request.cat_id == cat.id %>
+            <% selected = (@rental_request.cat_id == cat.id) %>
             <option <%= selected ? "selected" : "" %> value="<%= cat.id %>">
                 <%= cat.name %>
             </option>

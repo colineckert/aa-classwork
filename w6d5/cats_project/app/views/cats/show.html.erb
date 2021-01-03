@@ -37,10 +37,6 @@
         <th>Status</th>
     </tr>
     <% @cat.rental_requests.order('start_date').each do |request| %>
-        <tr>
-            <td><%= request.start_date %></td>
-            <td><%= request.end_date %></td>
-            <td><%= request.status %></td>
-        </tr>
+        <%= render 'req', req: request %>
     <% end %>
 </table>
