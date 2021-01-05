@@ -34,7 +34,7 @@ class BandsController < ApplicationController
     render :edit
   end
 
-  def updated
+  def update
     @band = Band.find_by(id: params[:id])
 
     if @band.update(band_params)
