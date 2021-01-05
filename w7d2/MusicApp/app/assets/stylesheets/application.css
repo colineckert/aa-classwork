@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .header {
+   display: flex;
+   justify-content: flex-end;
+ }
+
+input[type="submit"] {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+ }

@@ -10,12 +10,22 @@
   </head>
 
   <body>
+  <header class="header">
     <% if logged_in? %>
-      <form action="<% session_url %>" method="POST">
+      <form action="<%= session_url %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
         <input type="submit" value="Sign out">
       </form>
+    <% else %>
+      <form action="<%= new_user_url %>" method="GET">
+        <input type="submit" value="Sign Up">
+      </form>
+      <form action="<%= new_session_url %>" method="GET">
+        <input type="submit" value="Sign In">
+      </form>
     <% end %>
+    </header>
 
     <%= yield %>
   </body>
