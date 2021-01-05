@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_current_user!, except: [:create, :new]
+
   def new
     @user = User.new
     render :new
@@ -8,7 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_url
+      login_user!(@user)
+      redirect_to cats_url
     else
       render :new
     end

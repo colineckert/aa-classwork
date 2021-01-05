@@ -1,9 +1,9 @@
-<h1>Sign Up!</h1>
+<h1>Log in!</h1>
 
-<form action="/user" method="POST">
+<form action="/session" method="POST">
   <input 
     type="hidden" 
-    name="authenticity_token" 
+    name="authenticity_token"
     value="<%= form_authenticity_token %>">
 
   <label for="user_username">Username</label>
@@ -21,5 +21,5 @@
     id="user_password">
   <br>
 
-  <input type="submit" value="Create User">
+  <input type="submit" value="Log in">
 </form>
