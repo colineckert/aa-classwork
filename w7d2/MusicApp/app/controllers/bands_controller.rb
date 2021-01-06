@@ -49,9 +49,9 @@ class BandsController < ApplicationController
     @band.destroy
     redirect_to bands_url
   end
-end
-
-private
-def band_params
-  params.require(:band).permit(:name)
+  
+  private
+  def band_params
+    params.require(:band).permit(:name)
+  end
 end
