@@ -1,0 +1,23 @@
+.sections-nav {
+  font-family: sans-serif;
+  font-size: 12px;
+  border-bottom: 1px solid $light-gray;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul li:last-child {
+    font-size: 10px;
+  }
+  
+  ul > li {
+    padding: 15px;
+  }
+}
+
+section:hover {
+  background-color: #e2e2e2;
+}
