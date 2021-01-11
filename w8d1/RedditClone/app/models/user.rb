@@ -6,8 +6,12 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     
     has_many :subs, 
-        foreign_key: :moderator_id, 
-        class_name: :Sub
+    foreign_key: :moderator_id, 
+    class_name: :Sub
+    
+    has_many :posts, 
+    foreign_key: :author_id, 
+    class_name: :Post
     
     #spire
 
