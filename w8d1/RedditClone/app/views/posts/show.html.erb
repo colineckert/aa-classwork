@@ -1,0 +1,11 @@
+<h1><%= @post.title %></h1>
+
+<ul>
+    <li><%= @post.url %></li>
+    <li><%= @post.content %></li>
+    <li><%= User.find_by(id: @post.author_id).username %></li>
+</ul>
+
+<br>
+
+<a href="<%= edit_post_url(@post) %>">Edit Post</a>
