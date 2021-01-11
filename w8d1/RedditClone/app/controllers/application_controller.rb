@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
 
     def require_moderator
         sub = Sub.find_by(id: params[:id])
+        flash[:errors] = ['You are not the moderator of this sub!']
         redirect_to sub_url(sub) unless current_user.subs.include?(sub)
     end
 end
