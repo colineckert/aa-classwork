@@ -1,0 +1,16 @@
+<h1><%= @sub.title %></h1>
+
+<h3>Description</h3>
+<p><%= @sub.description %></p>
+
+<br>
+
+<% if current_user.id == @sub.moderator_id %>
+
+    <a href="<%= edit_sub_url(@sub) %>">Edit Sub</a>
+
+<% end %>
+
+<br>
+
+<a href="<%= subs_url %>">All Subs</a>
