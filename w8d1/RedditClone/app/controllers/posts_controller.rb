@@ -22,6 +22,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find_by(id: params[:id])
+    render :show
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+    render :edit
+  end
+
+  def update
+    @post = current_user.posts.find_by(id: params[:id])
+    if @post && @post.update(post_params)
+      redirect_to post_url(@post)
+    else
+      flash.now[:errors] = ['Post must have a title!']
+      render :edit
+    end
+  end
 
   private
   def post_params
