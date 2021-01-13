@@ -41,4 +41,4 @@ Array.prototype.transpose = function () {
   return newArr;
 };
 
-console.log([[1, 3, 4], [2, 4, 5], [6, 7, 8]].transpose()); /* [1, 2, 6][3, 4, 7][4, 5, 8] */
+// console.log([[1, 3, 4], [2, 4, 5], [6, 7, 8]].transpose()); /* [1, 2, 6][3, 4, 7][4, 5, 8] */
