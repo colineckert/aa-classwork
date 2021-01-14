@@ -13,8 +13,12 @@ const multiply = function(num) {
 
 // Array#myMap(callback)
 Array.prototype.myMap = function (callback) {
-  let newArr = this
-  newArr.myEach(callback)
+  let newArr = [];
+  
+  this.myEach( (el) => {
+    newArr.push(callback(el));
+  })
+
   return newArr;
 };
 // console.log([1, 2, 3].myMap(multiply)) 
@@ -25,4 +29,4 @@ Array.prototype.myReduce = function(callback, num = 0) {
   this.myEach((el) => num = callback(num,el));
   return num;
 }
-console.log([1,2,3].myReduce((acc, el) => acc + el));
+// console.log([1,2,3].myReduce((acc, el) => acc + el));
