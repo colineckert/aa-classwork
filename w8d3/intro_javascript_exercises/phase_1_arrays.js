@@ -10,7 +10,7 @@ Array.prototype.uniq = function () {
   return newArr;
 }
 
-// console.log([1, 2, 2, 3, 3, 3].uniq())
+console.log([1, 2, 2, 3, 3, 3].uniq())
 
 // Array#twoSum
 Array.prototype.twoSum = function () {
