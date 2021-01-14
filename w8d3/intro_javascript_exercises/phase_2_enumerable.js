@@ -25,8 +25,16 @@ Array.prototype.myMap = function (callback) {
 
 
 // Array#myReduce(callback[, initialValue])
-Array.prototype.myReduce = function(callback, num = 0) {
-  this.myEach((el) => num = callback(num,el));
-  return num;
+Array.prototype.myReduce = function(callback, initialValue) {
+  let arr = this;
+
+  if (initialValue === undefined) {
+    initialValue = arr[0];
+    arr = arr.slice(1);
+  }
+  
+  let result = initialValue;
+  arr.myEach(el => result = callback(result, el));
+  return result;
 }
-// console.log([1,2,3].myReduce((acc, el) => acc + el));
+console.log([1,2,3].myReduce((acc, el) => acc + el));
