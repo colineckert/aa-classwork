@@ -119,15 +119,6 @@ function merge(left, right) {
 
 // console.log(mergesort([5, 2, 1, 6, 5, 4]))
 
-// function subsets(arr) {
-//   if (arr.length <= 1) return arr;
-
-//   return arr[0] + subsets(arr.slice(1))
-// }
-
-// console.log(subsets([1, 2, 3, 4, 5]))
-
-// subsets
 function subsets(array) {
   if (array.length === 0) {
     return [[]];
