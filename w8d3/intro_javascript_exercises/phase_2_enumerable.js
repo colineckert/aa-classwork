@@ -37,4 +37,4 @@ Array.prototype.myReduce = function(callback, initialValue) {
   arr.myEach(el => result = callback(result, el));
   return result;
 }
-console.log([1,2,3].myReduce((acc, el) => acc + el));
+// console.log([1,2,3].myReduce((acc, el) => acc + el));

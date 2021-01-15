@@ -54,19 +54,91 @@ function fibonacci(n) {
 // console.log(fibonacci(6))
 
 function deepDup(arr) {
-  // if (!Array.isArray(arr)) {
-  //   return arr;
-  // }
   return arr.map(el => {
-    return (Array.isArray(el) ? deepDup(el) : el);
+    return (el instanceof Array ? deepDup(el) : el);
   });
 }
 
-const array = [[2], 3];
-const dupedArray = deepDup(array);
-console.log(`deepDup original = ${JSON.stringify(array)}`);
+// const array = [[2], 3];
+// const dupedArray = deepDup(array);
+// console.log(`deepDup original = ${JSON.stringify(array)}`);
 
-dupedArray[0].push(4);
+// dupedArray[0].push(4);
 
-console.log(`deepDup original = ${JSON.stringify(array)} (should not be mutated)`);
-console.log(`deepDup duped = ${JSON.stringify(dupedArray)} (should be mutated)`);
+// console.log(`deepDup original = ${JSON.stringify(array)} (should not be mutated)`);
+// console.log(`deepDup duped = ${JSON.stringify(dupedArray)} (should be mutated)`);
+
+function bsearch(arr, target) {
+  if (arr.length === 0) return -1;
+
+  let mid = Math.floor(arr.length / 2);
+  let left = arr.slice(0, mid);
+  let right = arr.slice(mid + 1);
+  
+  if (arr[mid] === target) {
+    return mid;
+  } else if (arr[mid] > target) {
+    return bsearch(left, target);
+  } else {
+    let search_right = bsearch(right, target);
+    return (search_right === -1) ? -1 : search_right + (mid + 1);
+  }
+}
+
+// console.log(bsearch([1, 2, 3, 4, 5], 4))
+// console.log(bsearch([1, 2, 3, 4, 5], 6))
+// console.log(bsearch([1, 2, 3, 4, 5], 2))
+
+function mergesort(arr) {
+  if (arr.length <= 1) return arr;
+
+  let mid = Math.floor(arr.length / 2);
+  
+  let left = arr.slice(0, mid);
+  let right = arr.slice(mid);
+  
+  let sortedLeft = mergesort(left);
+  let sortedRight = mergesort(right);
+
+  return merge(sortedLeft, sortedRight);
+}
+
+function merge(left, right) {
+  const mergedArr = [];
+  
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      mergedArr.push(left.shift());
+    } else {
+      mergedArr.push(right.shift());
+    }
+  }
+
+  return mergedArr.concat(left, right);
+}
+
+// console.log(mergesort([5, 2, 1, 6, 5, 4]))
+
+// function subsets(arr) {
+//   if (arr.length <= 1) return arr;
+
+//   return arr[0] + subsets(arr.slice(1))
+// }
+
+// console.log(subsets([1, 2, 3, 4, 5]))
+
+// subsets
+function subsets(array) {
+  if (array.length === 0) {
+    return [[]];
+  }
+
+  const first = array[0];
+  const withoutFirst = subsets(array.slice(1));
+  
+  const withFirst = withoutFirst.map(sub => [first].concat(sub));
+  
+  return withoutFirst.concat(withFirst);
+}
+
+console.log(`subsets([1, 3, 5]) = ${JSON.stringify(subsets([1, 3, 5]))}`);
