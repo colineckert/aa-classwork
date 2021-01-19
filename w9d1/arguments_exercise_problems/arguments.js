@@ -100,16 +100,12 @@ notMarkovSays("meow", "me");
 // Here's an example of two ways to use a sumThree function. The first is a typical version that takes 3 arguments; the second is a curried version:
 
 function sumThree(num1, num2, num3) {
+  console.log(`${num1} ${num2} ${num3}`)
   return num1 + num2 + num3;
 }
 
-sumThree(4, 20, 6); // == 30
+// sumThree(4, 20, 6); // == 30
 
-// you'll write `Function#curry`!
-// let f1 = sumThree.curry(3); // tells `f1` to wait until 3 arguments are given before running `sumThree`
-// f1 = f1(4); // [Function]
-// f1 = f1(20); // [Function]
-// f1 = f1(6); // = 30
 
 // or more briefly:
 // sumThree.curry(3)(4)(20)(6); // == 30
@@ -144,3 +140,43 @@ sum(5)(30)(20)(1); // => 56
 // Returns _curriedSum.
 // If you're confused, think of it this way: _curriedSum keeps collecting arguments and returning itself until it has enough arguments, at which point it actually does the required work of summing.
 
+// Function.prototype.curry
+// Write a method Function.prototype.curry(numArgs). This should return a function that will:
+
+// Collect up arguments until there are numArgs of them,
+// If there are too few arguments still, it should return itself.
+// When there are numArgs arguments, it should call the original function.
+// Write a version that uses Function.prototype.apply and another one that uses ... (the spread operator).
+
+// Function.prototype.curry = function(numArgs) {
+//   const nums = [];
+//   const that = this;
+//   return function _curry(num) {
+//     nums.push(num);
+//     if (nums.length < numArgs){
+//       return _curry
+//     } else {
+//       return that.apply(null, nums);
+//     }
+//   }
+// }
+
+Function.prototype.curry = function(numArgs) {
+  const nums = [];
+  const func = this;
+  return function _curry(num) {
+    nums.push(num);
+    if (nums.length < numArgs){
+      return _curry
+    } else {
+      return func(...nums);
+    }
+  }
+}
+// you'll write `Function#curry`!
+let f1 = sumThree.curry(3); // tells `f1` to wait until 3 arguments are given before running `sumThree`
+f1 = f1(4); // [Function]
+f1 = f1(20); // [Function]
+f1 = f1(6); // = 30
+
+console.log(f1)
