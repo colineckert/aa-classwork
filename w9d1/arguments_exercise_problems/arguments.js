@@ -26,7 +26,7 @@ console.log(sum2(1, 2, 3, 4, 5));
 
 // Function.prototype.myBind = function(ctx) {
 //   const that = this;
-//   let bindArgs = Array.prototype.slice.call(arguments, 1);
+//   let bindArgs = Array.from(arguments).slice(1);
 //   return function() {
 //     let callArgs = Array.from(arguments);
 //     return that.apply(ctx, bindArgs.concat(callArgs));
