@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _war
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"htmlGenerator\": () => /* binding */ htmlGenerator\n/* harmony export */ });\n\nconst partyHeader = document.getElementById('party');\n\nconst htmlGenerator = (string, htmlElement) => {\n    const p = document.createElement(\"p\");\n    p.innerText = string;\n    htmlElement.append(p);\n    \n};\n\nhtmlGenerator('Party Time.', partyHeader);\n\n//# sourceURL=webpack:///./src/warmup.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"htmlGenerator\": () => /* binding */ htmlGenerator\n/* harmony export */ });\n\nconst partyHeader = document.getElementById('party');\n\nconst htmlGenerator = (string, htmlElement) => {\n    let children = Array.from(htmlElement.children);\n    // debugger\n    if (!htmlElement.hasChildNodes()) {\n        children.map((child)=> {\n            const p = document.createElement(\"p\");\n            p.innerText = string;\n            htmlElement.append(p);\n        })\n    }else {\n        // debugger\n        htmlElement.innerHtml = \"\";\n        const p = document.createElement(\"p\");\n        p.innerText = children[children.length - 1].value;\n        // p.innerText = string\n        htmlElement.append(p);\n\n    }\n\n};\n\nhtmlGenerator('Party Time.', partyHeader);\n\n//# sourceURL=webpack:///./src/warmup.js?");
 
 /***/ })
 
