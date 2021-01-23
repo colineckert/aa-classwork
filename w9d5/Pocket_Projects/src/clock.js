@@ -1,5 +1,7 @@
 import { htmlGenerator } from "./warmup";
 
+const clockElement = document.getElementById('clock');
+
 class Clock {
     constructor() {
         // 1. Create a Date object.
@@ -56,5 +58,4 @@ class Clock {
     }
 }
 
-const clockElement = document.getElementById('clock');
 const clock = new Clock();
