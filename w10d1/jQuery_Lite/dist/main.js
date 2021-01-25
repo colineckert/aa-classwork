@@ -15,7 +15,7 @@
   \************************************/
 /***/ ((module) => {
 
-eval("class domNodeCollection {\n\n  constructor(nodeArray) {\n    this.nodeArray = nodeArray;\n  }\n\n  html(string) {\n    if (typeof(string) === \"string\") {\n      this.nodeArray.forEach(node => {\n        node.innerHTML = string;\n      });\n    } else {\n      return this.nodeArray[0].innerHTML;\n    };\n  }\n\n  empty() {\n    return this.html(\"\");\n  }\n}\n\nmodule.exports = domNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("class DomNodeCollection {\n\n  constructor(nodeArray) {\n    this.nodeArray = nodeArray;\n  }\n\n  html(string) {\n    if (typeof(string) === \"string\") {\n      this.nodeArray.forEach(node => {\n        node.innerHTML = string;\n      });\n    } else {\n      return this.nodeArray[0].innerHTML;\n    };\n  }\n\n  empty() {\n    return this.html(\"\");\n  }\n}\n\nmodule.exports = DomNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ })
 
@@ -49,7 +49,7 @@ eval("class domNodeCollection {\n\n  constructor(nodeArray) {\n    this.nodeArra
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-eval("const domNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\n$(() => {\n  window.$l = $l;\n})\n\nfunction $l(selector) {\n  if (selector instanceof HTMLElement) {\n    return new domNodeCollection(selector);\n  } else {\n    let nodeArray = Array.from(document.querySelectorAll(selector));\n    return new domNodeCollection(nodeArray);\n  };\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DomNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\n$(() => {\n  window.$l = $l;\n})\n\nfunction $l(selector) {\n  if (selector instanceof HTMLElement) {\n    return new DomNodeCollection(selector);\n  } else {\n    let nodeArray = Array.from(document.querySelectorAll(selector));\n    return new DomNodeCollection(nodeArray);\n  };\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 })();
 
 /******/ })()

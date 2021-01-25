@@ -1,4 +1,4 @@
-class domNodeCollection {
+class DomNodeCollection {
 
   constructor(nodeArray) {
     this.nodeArray = nodeArray;
@@ -19,4 +19,4 @@ class domNodeCollection {
   }
 }
 
-module.exports = domNodeCollection;
+module.exports = DomNodeCollection;
