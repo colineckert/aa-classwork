@@ -15,7 +15,7 @@
   \************************************/
 /***/ ((module) => {
 
-eval("class DomNodeCollection {\n\n  constructor(nodeArray) {\n    this.nodeArray = nodeArray;\n  }\n\n  html(string) {\n    if (typeof(string) === \"string\") {\n      this.nodeArray.forEach(node => {\n        node.innerHTML = string;\n      });\n    } else {\n      return this.nodeArray[0].innerHTML;\n    };\n  }\n\n  empty() {\n    return this.html(\"\");\n  }\n}\n\nmodule.exports = DomNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("class DomNodeCollection {\n\n  constructor(nodeArray) {\n    this.nodeArray = nodeArray;\n  }\n\n  html(string) {\n    if (typeof(string) === \"string\") {\n      this.nodeArray.forEach(node => {\n        node.innerHTML = string;\n      });\n    } else {\n      return this.nodeArray[0].innerHTML;\n    };\n  }\n\n  empty() {\n    return this.html(\"\");\n  }\n\n  append(args){\n    for (let i = 0; i < args.length; i++) {\n      this.html(args);\n    }\n  }\n\n}\n\nmodule.exports = DomNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ })
 

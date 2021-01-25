@@ -17,6 +17,13 @@ class DomNodeCollection {
   empty() {
     return this.html("");
   }
+
+  append(args){
+    for (let i = 0; i < args.length; i++) {
+      this.html(args);
+    }
+  }
+
 }
 
 module.exports = DomNodeCollection;
