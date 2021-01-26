@@ -45,11 +45,8 @@ class DomNodeCollection {
 
   removeClass(name){
     let classes = this.nodeArray[0].className.split(" ");
-
     let classToRemove = classes.indexOf(name);
-
     classes.splice(classToRemove, 1);
-
     this.attr("class", classes.join(" "));
   }
 
@@ -73,13 +70,11 @@ class DomNodeCollection {
     return new DomNodeCollection(parentNodes);
   }
 
-  find(selector) { //This might come in handy
-    //elementList = parentNode.querySelectorAll(selectors);
+  find(selector) {
     return this.nodeArray[0].querySelectorAll(selector);
   }
 
   remove(){
-    // debugger
     this.empty();
   }
 }
