@@ -1,3 +1,5 @@
+/* Clock */
+
 body {
     display: flex;
     justify-content: space-around;
@@ -24,5 +26,79 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     color: white;
+}
+
+/* Tabs */
+
+.tab-header{
+  width: 200px;
+  height: 30px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-header > li{
+  width: 65px;
+  border-top: 2px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-top: 4px;
+  text-align: center;
+  cursor: pointer;
+  background-color: lightpink;
+}
+
+.tab-header > li:first-child{
+  border-left: 2px solid black;
+}
+
+.tab-header > li:last-child{
+  border-right: 2px solid black;
+}
+
+.tab-header > li:hover{
+  background-color: black;
+  color: white;
+}
+
+.active{
+  font-weight: bold;
+}
+
+.tabs{
+  width: 240px;
+  height: 200px;
+}
+
+.tab-content{
+  font-weight: bold;
+  color: white;
+  height: 192px;
+  margin: 0 20px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+}
+
+.tab-content article{
+  text-align: center;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+}
+
+.interactive{
+  display: flex;
+  justify-content: space-around;
 }
 
