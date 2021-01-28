@@ -1,0 +1,69 @@
+#react-root {
+    margin: 0 auto;
+    text-align: center;
+    width: 600px;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+.tile {
+    /* border-style: outset; */
+    position: relative;
+    float: left;
+    background: lightgray;
+    height: 20px;
+    width: 20px;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.unrevealed, .flagged {
+    border-style: outset;
+}
+
+.revealed, .bombed {
+    border-style: inset;
+    position: relative;
+    float: left;
+    background: lightgray;
+    height: 20px;
+    width: 20px;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.flagged, .bombed {
+    color: red;
+}
+
+.modal-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    z-index: 3;
+    border: 1px solid black;
+    background-color: white;
+    top: 150px;
+    left: 50%;
+    margin-left: -140px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 10px;
+}
