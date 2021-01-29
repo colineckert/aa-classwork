@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const reactRoot = document.getElementById('root');
   // ReactDOM.render(, reactRoot);
   window.store = configureStore();
+  
   window.receiveTodo = receiveTodo;
   window.receiveTodos = receiveTodos;
   window.removeTodo = removeTodo;
