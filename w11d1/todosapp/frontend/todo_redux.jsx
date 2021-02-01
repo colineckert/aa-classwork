@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
+import { fetchTodos } from './util/todo_api_util';
 // import { receiveTodos, receiveTodo, removeTodo} from './actions/todo_actions';
 // import { receiveSteps, receiveStep, removeStep} from './actions/step_actions';
 import Root from './components/root';
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = configureStore();
   const reactRoot = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, reactRoot);
-
+  window.fetchTodos = fetchTodos;
   // window.allTodos = allTodos;
   
   // window.receiveTodo = receiveTodo;
