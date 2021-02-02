@@ -1,5 +1,7 @@
-import { createStore } from 'redux';
-import rootReducer from '../reducers/root_reducer'
+import { createStore, applyMiddleware } from 'redux';
+import thunk from '../middleware/thunk';
+import rootReducer from '../reducers/root_reducer';
+
 
 const initialState = {
   todos: {
@@ -27,7 +29,11 @@ const initialState = {
 }
 
 const configureStore = (preloadedState = initialState) => {
-  const store = createStore(rootReducer, preloadedState);
+  const store = createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(thunk)
+    );
   return store;
 }
 
