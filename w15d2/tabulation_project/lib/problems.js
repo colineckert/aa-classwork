@@ -87,22 +87,21 @@ function stepper(nums, memo = {}) {
 // }
 
 // memoization
-function maxNonAdjacentSum(nums) {
+function maxNonAdjacentSum(nums, memo = {}) {
+    if (nums.length in memo) return memo[nums.length];
     if (nums.length === 0) return 0;
 
-    let maxSum = 0;
-    for (let i = 1; i < nums.length; i++) {
-        let skipLeft = nums[i - 2] === undefined ? 0 : nums[i - 2];
-        let includethisNum = maxNonAdjacentSum(skipLeft) + nums[i];
-        let notIncludeLeft = maxNonAdjacentSum(nums[i - 1]);
-        maxSum = Math.max(includethisNum, notIncludeLeft);
-    }
+    let firstEle = nums[0];
+    memo[nums.length] = Math.max(
+        firstEle + maxNonAdjacentSum(nums.slice(2), memo),
+        maxNonAdjacentSum(nums.slice(1), memo)
+    );
 
-    return maxSum;
+    return memo[nums.length];
 }
  
 // Write a function, minChange(coins, amount), that accepts an array of coin values
-// and a target amount as arguments. The method should the minimum number of coins needed
+// and a target amount as arguments. The method should return the minimum number of coins needed
 // to make the target amount. A coin value can be used multiple times.
 //
 // You've seen this problem before with memoization, but now solve it using the Tabulation strategy!
@@ -113,8 +112,29 @@ function maxNonAdjacentSum(nums) {
 // minChange([1, 4, 5], 8))         // => 2, because 4 + 4 = 8
 // minChange([1, 5, 10, 25], 15)    // => 2, because 10 + 5 = 15
 // minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
-function minChange(coins, amount) {
 
+function minChange(coins, amount) {
+    // set table to cover all values up to amount to save min coins at each value
+    let table = new Array(amount + 1).fill(Infinity);
+    
+    table[0] = 0;
+    coins.forEach(coin => {
+        for (let amt = 0; amt < table.length; amt++) {
+            for (let qty = 0; qty * coin <= amt; qty++) {
+
+                // calculate reminder given current amount of this coin
+                let remainder = amt - (qty * coin);
+
+                // look for amount of coins to make remainder in table, then add current qty
+                let attempt = table[remainder] + qty;
+
+                // check if this attempt of coins qty is better than current value in table
+                if (attempt < table[amt]) table[amt] = attempt;
+            }
+        }
+    });
+
+    return table[table.length - 1];
 }
 
 
