@@ -114,7 +114,14 @@ class LinkedList {
 
     // TODO: Implement the get method here
     get(index) {
-
+        if (index < 0 || index > this.length) return null;
+        let current = this.head;
+        let counter = 0;
+        while (counter < index) {
+            current = current.next;
+            counter++;
+        }
+        return current;
     }
 
     // TODO: Implement the set method here
@@ -134,7 +141,7 @@ class LinkedList {
 
     // TODO: Implement the size method here
     size() {
-
+        return this.length;
     }
 }
 
