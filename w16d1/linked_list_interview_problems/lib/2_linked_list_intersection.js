@@ -43,7 +43,7 @@ function linkedListIntersection(list1, list2) {
   const list1Length = getLinkedListLength(list1.head);
   const list2Length = getLinkedListLength(list2.head);
 
-  let diff = Math.abs(list2Length - list1Length);
+  let diff = Math.abs(list2Length - list1Length); // get the differnce in length between 2 lists
   let long = list1Length >= list2Length ? list1.head : list2.head;
   let short = list1Length >= list2Length ? list2.head : list1.head;
 
