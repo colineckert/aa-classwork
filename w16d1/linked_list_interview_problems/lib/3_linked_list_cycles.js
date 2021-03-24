@@ -61,7 +61,16 @@
 // -----------
 function hasCycle(linkedList) {
   // TODO: Implement the hasCycle function!
+  let slow = linkedList.head;
+  let fast = linkedList.head;
+  let pause = true;
 
+  while (fast = fast.next) {
+    if (fast === slow) return true;
+    slow = pause ? slow : slow.next;
+    pause = !pause;
+  }
+  return false;
 }
 
 
