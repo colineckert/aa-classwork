@@ -77,10 +77,21 @@ class Stack {
         this.top = null;
         this.bottom = null;
         this.length = 0;
+        this.maxValues = [];
+        this.minValues = [];
     }
 
     push(val) {
         const newNode = new Node(val);
+
+        if (!this.minValues.length || newNode.value <= this.minValues[this.minValues.length - 1].value) {
+            this.minValues.push(newNode);
+        } 
+
+        if (!this.maxValues.length || newNode.value >= this.maxValues[this.maxValues.length - 1].value) {
+            this.maxValues.push(newNode);
+        } 
+
         if (!this.top) {
             this.top = newNode;
             this.bottom = newNode;
@@ -89,6 +100,7 @@ class Stack {
             this.top = newNode;
             this.top.next = temp;
         }
+        
         return ++this.length;
     }
 
@@ -96,6 +108,15 @@ class Stack {
         if (!this.top) {
             return null;
         }
+
+        if (this.top.value === this.minValues[this.minValues.length - 1].value) {
+            this.minValues.pop();
+        }
+
+        if (this.top.value === this.maxValues[this.maxValues.length - 1].value) {
+            this.maxValues.pop();
+        }
+
         const temp = this.top;
         if (this.top === this.bottom) {
             this.bottom = null;
@@ -107,6 +128,14 @@ class Stack {
 
     size() {
         return this.length;
+    }
+
+    min() {
+        return this.minValues[this.minValues.length - 1] || null;
+    }
+
+    max() {
+        return this.maxValues[this.maxValues.length - 1] || null;
     }
 }
 
