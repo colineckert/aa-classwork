@@ -8,7 +8,7 @@ function breadthFirstArray(root) {
         if (node.left) queue.unshift(node.left);
         if (node.right) queue.unshift(node.right);
     }
-    return arr;
+    return visited;
 }
 
 module.exports = {
