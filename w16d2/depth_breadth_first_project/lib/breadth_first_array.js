@@ -3,10 +3,10 @@ function breadthFirstArray(root) {
     const visited = [];
 
     while (queue.length) {
-        let node = queue.pop();
+        let node = queue.shift();
         visited.push(node.val);
-        if (node.left) queue.unshift(node.left);
-        if (node.right) queue.unshift(node.right);
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
     }
     return visited;
 }
