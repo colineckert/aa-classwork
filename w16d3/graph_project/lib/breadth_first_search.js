@@ -6,9 +6,9 @@ function breadthFirstSearch(startingNode, targetVal) {
         let node = queue.shift();
         if (visited.has(node)) continue;
 
+        visited.add(node);
         if (targetVal === node.val) return node;
         
-        visited.add(node);
         queue.push(...node.neighbors);
     }
 
