@@ -1,19 +1,19 @@
 // View the full problem and run the test cases at:
 //  https://leetcode.com/problems/course-schedule/
 
-function buildGraph(edges) {
+function buildGraph(list) {
   let graph = {};
-  edges.forEach(edge => {
-    let [ dest, src ] = edge.map(String);
+  list.forEach(prereq => {
+    let [ course, pre ] = prereq.map(String);
     
-    if (dest in graph) {
-      graph[dest].push(src);
+    if (course in graph) {
+      graph[course].push(pre);
     } else {
-      graph[dest] = [ src ];
+      graph[course] = [ pre ];
     }
 
-    if (!(src in graph)) {
-      graph[src] = [];
+    if (!(pre in graph)) {
+      graph[pre] = [];
     }
   });
 
