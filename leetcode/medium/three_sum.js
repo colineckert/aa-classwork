@@ -4,7 +4,7 @@ function threeNumberSum(array, targetSum) {
 	
 	const triSums = [];
 	
-	for (let i = 0; i < array.length; i++) {
+	for (let i = 0; i < array.length - 2; i++) {
 		let left = i + 1;
 		let right = array.length - 1;
 		
