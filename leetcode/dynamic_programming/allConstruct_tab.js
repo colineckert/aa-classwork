@@ -1,13 +1,15 @@
-// O(m^2*n) time | O(m) space
+// O(n^m) time | O(n^m) space
 const allConstruct = (target, wordBank) => {
-  const table = Array(target.length + 1).fill(0);
-  table[0] = 1;
+  const table = Array(target.length + 1)
+    .fill()
+    .map(() => []);
+  table[0] = [[]];
 
   for (let i = 0; i <= target.length; i++) {
     for (let word of wordBank) {
-      // if the word matches the characters starting at position i
       if (target.slice(i, i + word.length) === word) {
-        table[i + word.length] += table[i];
+        const newCombinations = table[i].map(subArray => [ ...subArray, word ]);
+        table[i + word.length].push(...newCombinations);
       }
     }
   }
