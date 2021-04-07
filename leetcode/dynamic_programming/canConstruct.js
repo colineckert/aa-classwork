@@ -1,7 +1,7 @@
 // m = target.length -> height of tree
 // n = wordBank.length
 // O(n * m^2) time | O(m^2) space
-const canConstruct = (target, wordBank, memo) => {
+const canConstruct = (target, wordBank, memo={}) => {
   if (target in memo) return memo[target];
   if (target === '') return true;
 
