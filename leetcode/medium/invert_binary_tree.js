@@ -11,6 +11,16 @@ function invertBinaryTree(tree) {
 	invertBinaryTree(tree.right);
 }
 
+// shorter version
+function invertBinaryTree(tree) {
+  if (tree === null) return;
+
+	[tree.left, tree.right] = [tree.right, tree.left];
+
+	invertBinaryTree(tree.left);
+	invertBinaryTree(tree.right);
+}
+
 // This is the class of the input binary tree.
 class BinaryTree {
   constructor(value) {
