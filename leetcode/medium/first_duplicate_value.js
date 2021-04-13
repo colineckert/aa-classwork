@@ -16,10 +16,9 @@ function firstDuplicateValue(array) {
 // O(n) time | O(n) space
 function firstDuplicateValue(array) {
   const seen = new Set();
-	for (let i = 0; i < array.length; i++) {
-		let currVal = array[i];
-		if (seen.has(currVal)) return currVal;
-		seen.add(currVal);
+	for (let num of array) {
+		if (seen.has(num)) return num;
+		seen.add(num);
 	}
   return -1;
 }
