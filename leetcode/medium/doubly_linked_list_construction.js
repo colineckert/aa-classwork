@@ -106,6 +106,7 @@ class DoublyLinkedList {
 		node.next = null;
 	}
 
+  // O(n) time | O(1) space
   containsNodeWithValue(value) {
     let node = this.head;
 		while (node !== null && node.value !== value) node = node.next;
