@@ -32,3 +32,18 @@ function arrayOfProducts(array) {
 function multiplyReplace(arr) {
 	return arr.reduce((acc, el) => acc * el);
 }
+
+// Brute force coding challenge
+// function arrayOfProducts(array) {
+// 	Const products = [];
+	
+// 	For (let i = 0; i < array.length; i++) {  // array[i] = 2
+// 		Let total = 1;
+// 		For (let j = 0; j < array.length; j++) { // array[j] = 4
+// 			If (j === i) continue;
+// 			Total *= array[j]; // total = 12
+// 		}
+// 		products.push(total);
+// 	}
+// 	Return products; // [24, 12]
+// }
