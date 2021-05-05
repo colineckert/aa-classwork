@@ -9,8 +9,8 @@ class LinkedList {
 // O(max(n, m)) time | O(max(n, m)) space - where n is the length of the 
 // furst Linked List and m is the length of the second Linked List
 function sumOfLinkedLists(linkedListOne, linkedListTwo) {
-  const newLinkedListHead = new LinkedList(0);
-	let currNode = newLinkedListHead;
+  const newLinkedListHeadPointer = new LinkedList(0);
+	let currNode = newLinkedListHeadPointer;
 	let carry = 0;
 	
 	let nodeOne = linkedListOne;
@@ -31,5 +31,9 @@ function sumOfLinkedLists(linkedListOne, linkedListTwo) {
 		nodeTwo = nodeTwo !== null ? nodeTwo.next : null;
 	}
 	
-	return newLinkedListHead.next;
-}	
+	return newLinkedListHeadPointer.next;
+}
+
+// Do not edit the lines below.
+exports.LinkedList = LinkedList;
+exports.sumOfLinkedLists = sumOfLinkedLists;
