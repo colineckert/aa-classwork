@@ -36,6 +36,26 @@ function numberOfWaysToTraverseGraph(width, height) {
 	return table[width][height]
 }
 
+ // OR This solution that looks at previous ways
+ function numberOfWaysToTraverseGraph(width, height) {
+	let paths = [...Array(height)].map(x => Array(width).fill(0))
+	
+	for (let widthIdx = 0; widthIdx < width; widthIdx++) {
+		for (let heightIdx = 0; heightIdx < height; heightIdx++) {
+			if (heightIdx === 0 || widthIdx === 0) {
+				paths[heightIdx][widthIdx] = 1
+			} else {
+				let upperHeight = paths[heightIdx - 1][widthIdx]
+				let leftWidth = paths[heightIdx][widthIdx - 1]
+				paths[heightIdx][widthIdx] = upperHeight + leftWidth
+			}
+		}
+	}
+	// return paths
+  return paths[height-1][width-1];
+}
+
+
 // O(n * m) time | O(n + m) space
 function numberOfWaysToTraverseGraph(width, height, memo = {}) {
 	const key = width + ',' + height;
