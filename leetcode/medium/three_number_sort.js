@@ -26,3 +26,30 @@ function swap(i, j, array) {
 	array[j] = array[i];
 	array[i] = temp;
 }
+
+// 1 pass solution, same time/space
+function threeNumberSort(array, order) {
+  let first = 0, second = 0, third = array.length - 1;
+	
+	while (second <= third) {
+		let value = array[second];
+		
+		if (value === order[0]) {
+			swap(first, second, array);
+			first++;
+			second++;
+		} else if (value === order[1]) {
+			second++;
+		} else {
+			swap(second, third, array);
+			third--;
+		}
+	}
+	return array;
+}
+
+function swap(i, j, array) {
+	const temp = array[j];
+	array[j] = array[i];
+	array[i] = temp;
+}
