@@ -8,11 +8,11 @@ var generate = function(numRows) {
         currentRow[currentRow.length - 1] = 1;
         
         for (let j = 1; j < i; j ++) {
-            currentRow[j] = pascal[i-1][j-1] + pascal[i-1][j]
+            currentRow[j] = pascal[i-1][j-1] + pascal[i-1][j];
         }
         
-        pascal.push(currentRow)
+        pascal.push(currentRow);
     }
     
-    return pascal
+    return pascal;
 };
