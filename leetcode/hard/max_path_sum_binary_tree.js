@@ -9,10 +9,11 @@ function findMaxSum(tree) {
 	
 	const [leftMaxBranchSum, leftMaxPathSum] = findMaxSum(tree.left);
 	const [rightMaxBranchSum, rightMaxPathSum] = findMaxSum(tree.right);
-	
 	const maxChildBranchSum = Math.max(leftMaxBranchSum, rightMaxBranchSum);
-	const maxBranchSum = Math.max(maxChildBranchSum + tree.value, tree.value);
-	const maxTriSum = Math.max(maxBranchSum, leftMaxBranchSum + tree.value + rightMaxBranchSum);
+	
+	const { value } = tree;
+	const maxBranchSum = Math.max(maxChildBranchSum + value, value);
+	const maxTriSum = Math.max(maxBranchSum, leftMaxBranchSum + value + rightMaxBranchSum);
 	const runningMaxPathSum = Math.max(leftMaxPathSum, rightMaxPathSum, maxTriSum);
 	
 	return [maxBranchSum, runningMaxPathSum];
