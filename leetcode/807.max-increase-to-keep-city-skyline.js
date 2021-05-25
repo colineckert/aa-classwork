@@ -30,14 +30,13 @@ var maxIncreaseKeepingSkyline = function(grid) {
 		}
 	}
 
-
 	for (let r = 0; r < grid.length; r++) {
 		for (let c = 0; c < grid[r].length; c++) {
-			let value = grid[r][c];
+			let currVal = grid[r][c];
 			const rowMax = rowMaxes[r];
 			const colMax = colMaxes[c];
 			const posMax = Math.min(rowMax, colMax);
-			delta += (posMax - value);
+			delta += (posMax - currVal);
 		}
 	}
 
