@@ -9,13 +9,11 @@ function candyCrush(string) {
       if (stack[stack.length - 1][1] >= 3) {
         stack.pop();
       }
-
       if (stack.length && stack[stack.length - 1][0] === string[i]) {
         stack[stack.length - 1][1] += 1;
       } else {
         stack.push([string[i], 1]);
       }
-
     } else {
       stack[stack.length - 1][1] += 1;
     }
