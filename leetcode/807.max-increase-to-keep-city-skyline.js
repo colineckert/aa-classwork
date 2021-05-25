@@ -12,7 +12,7 @@
 var maxIncreaseKeepingSkyline = function(grid) {
 	const rowMaxes = {};
 	const colMaxes = {};
-	let diff = 0;
+	let delta = 0;
 
 	for (let r = 0; r < grid.length; r++) {
 		for (let c = 0; c < grid[r].length; c++) {
@@ -27,7 +27,6 @@ var maxIncreaseKeepingSkyline = function(grid) {
 			} else {
 				colMaxes[c] = Math.max(grid[r][c], colMaxes[c]);
 			}
-
 		}
 	}
 
@@ -38,11 +37,11 @@ var maxIncreaseKeepingSkyline = function(grid) {
 			const rowMax = rowMaxes[r];
 			const colMax = colMaxes[c];
 			const posMax = Math.min(rowMax, colMax);
-			diff += (posMax - value);
+			delta += (posMax - value);
 		}
 	}
 
-	return diff;
+	return delta;
 };
 // @lc code=end
 
