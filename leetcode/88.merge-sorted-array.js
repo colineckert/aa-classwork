@@ -13,11 +13,11 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-  for (let i = nums1.length - 1; i >= m; i--) {
-    nums1[i] = nums2.pop();
+  let idx1 = m - 1, idx2 = n - 1, idx3 = m + n - 1;
+  
+  while (idx2 >= 0) {
+    nums1[idx3--] = nums1[idx1] > nums2[idx2] ? nums1[idx1--] : nums2[idx2--];
   }
-
-  nums1.sort((a, b) => a - b);
 };
 // @lc code=end
 
