@@ -13,12 +13,12 @@ var allPathsSourceTarget = function(graph) {
     const N = graph.length, result = [];
     
     function callDFS(node, arr) {
-        if(node === N-1) {
+        if (node === N - 1) {
             result.push([...arr, node])
             return;
         }
         
-        for(let next of graph[node]) {
+        for (let next of graph[node]) {
             callDFS(next, [...arr, node]);
         }
     }
