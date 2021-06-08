@@ -4,14 +4,14 @@ var minKnightMoves = function (x, y) {
 
   const dirs = [
     [-2, -1],
-    [-2, +1], //up
+    [-2, +1], 
     [-1, -2],
-    [+1, -2], //left
+    [+1, -2], 
     [+2, -1],
-    [+2, +1], //down
+    [+2, +1], 
     [-1, +2],
     [+1, +2],
-  ]; //right
+  ]; 
 
   const queue = [[0, 0, 0]];
   const visited = new Set();
